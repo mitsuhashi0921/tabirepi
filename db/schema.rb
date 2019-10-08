@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_033655) do
+ActiveRecord::Schema.define(version: 2019_10_08_062809) do
 
   create_table "days", force: :cascade do |t|
-    t.integer "stay_id"
     t.integer "day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "trip_id"
   end
 
   create_table "endusers", force: :cascade do |t|
@@ -38,10 +38,7 @@ ActiveRecord::Schema.define(version: 2019_10_07_033655) do
   end
 
   create_table "stays", force: :cascade do |t|
-    t.string "time"
     t.string "status"
-    t.string "country"
-    t.string "prefecture"
     t.string "city"
     t.string "latitude"
     t.string "longitude"
@@ -51,15 +48,18 @@ ActiveRecord::Schema.define(version: 2019_10_07_033655) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state_code"
+    t.integer "day_id"
+    t.string "country"
+    t.time "time"
   end
 
   create_table "trips", force: :cascade do |t|
-    t.integer "day_id"
-    t.integer "like_id"
-    t.string "title_id"
     t.text "subtitle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.integer "enduser_id"
   end
 
 end

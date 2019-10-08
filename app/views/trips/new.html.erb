@@ -1,0 +1,12 @@
+<%= form_with model: @trip do |f| %>
+<!-- 何日目かをプルダウンで選択 -->
+<%= f.number_field :day,min: 1 %>日目</br>
+<!-- 国名をプルダウンで選択 -->
+  <%= f.country_select :country %></br>
+<!-- 具体的な場所を記述 -->
+<%= f.text_field :place %></br>
+<!-- 時間を選択 -->
+<%= f.time_select :time %></br>
+
+  <%= submit_tag %>
+<% end %>
