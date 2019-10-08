@@ -1,0 +1,13 @@
+<div class="nested-fields">
+	<!-- 何日目かをプルダウンで選択 -->
+	<%= f.number_field :day, min: 1 %>日目
+  <%= link_to_remove_association "remove day", f %>
+    <div id="parents">
+      <%= f.fields_for :stays do |stay| %>
+        <%= render 'stay_fields', f: stay %>
+  <% end %>
+      <div id="links">
+        <%= link_to_add_association 'add stays', f, :stays %>
+      </div>
+    </div>
+</div>
