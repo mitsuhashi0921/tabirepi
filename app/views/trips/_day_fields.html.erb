@@ -5,9 +5,9 @@
     <div id="parents">
       <%= f.fields_for :stays do |stay| %>
         <%= render 'stay_fields', f: stay %>
-  <% end %>
-      <div id="links">
+      <% end %>
+    </div>
+    <div id="links">
         <%= link_to_add_association 'add stays', f, :stays %>
-      </div>
     </div>
 </div>

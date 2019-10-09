@@ -1,0 +1,25 @@
+<%= render :partial => "map" %>
+
+<div class="col-md-5">
+      <div class="margin-bottom">
+        <b style="font-size:30px;"><%= @trip.title %></br></b>
+        <b style="font-size:20px;"><%= @trip.subtitle %></b>
+      </div>
+     <br>
+     <div class="margin-bottom moneyfont2">
+       <% @trip.days.each do |day| %>
+         <% day.stays.each do |stay| %>
+             <%= day.day %>日目</br>
+             <%= stay.time.strftime("%R") %>
+             <%= stay.status %>
+             <%= stay.country %>
+             <%= stay.place %>
+             <%= stay.money %>¥
+             <%= stay.comment %></br>
+           <% stay.images.each do |image| %>
+             <%= attachment_image_tag image, :image, :fill, 30, 30, fallback: "no_cd_image.png" %>
+           <% end %>
+         <% end %>
+       <% end %>
+     </div>
+</div>

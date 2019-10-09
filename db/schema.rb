@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_062809) do
+ActiveRecord::Schema.define(version: 2019_10_08_114451) do
 
   create_table "days", force: :cascade do |t|
     t.integer "day"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 2019_10_08_062809) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_endusers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_endusers_on_reset_password_token", unique: true
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.text "name"
+    t.text "image_id"
+    t.integer "stay_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stays", force: :cascade do |t|

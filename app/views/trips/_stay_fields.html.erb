@@ -2,15 +2,17 @@
     <!-- 時間を選択 -->
 	<%= f.time_select :time %>
 	<!-- 国名をプルダウンで選択 -->
-	<%= f.country_select :country %>
+	<%= f.country_select :country %></br>
 	<!-- 具体的な場所を記述 -->
-	<%= f.text_field :place, :placeholder => "訪問場所" %></br>
+	<%= f.text_field :place, :placeholder => "訪問場所", :size=>"40" %></br>
 	<!-- 状況　出発or到着or滞在 -->
-	<%= f.select :status, [['出発', 1], ['到着', 2], ['滞在', 3]] %>
+	<%= f.select :status, [['出発', '出発'], ['到着', '到着'], ['滞在', '滞在']] %>
 	<!-- 費用 -->
 	<%= f.number_field :money,min: 0 %>¥</br>
     <!-- 写真 -->
-	<%= f.attachment_field :picture %></br>
+	<%= f.fields_for :images do |image| %>
+	  <%= render 'image_fields', f: image %>
+	<% end %>
     <!-- コメント -->
 	<%= f.text_area :comment, :placeholder => "コメント記入欄", :size=>"60x10" %></br>
 	<div id="links">
