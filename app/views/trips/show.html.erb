@@ -17,9 +17,12 @@
              <%= stay.money %>¥
              <%= stay.comment %></br>
            <% stay.images.each do |image| %>
-             <%= attachment_image_tag image, :image, :fill, 30, 30, fallback: "no_cd_image.png" %>
+             <%= attachment_image_tag image, :image, :fill, 200, 200 %>
            <% end %>
          <% end %>
        <% end %>
      </div>
+    <td><%= link_to "編集", edit_trip_path(@trip), class: "btn btn-success btn-xs" %></td>
+    <td><%= link_to "削除", trip_path, model: @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
+    <%= link_to "一覧画面に行く", trips_path, class: 'btn btn-default' %>
 </div>

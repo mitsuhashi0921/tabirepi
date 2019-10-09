@@ -2,7 +2,10 @@
     <% @trips.each do |trip| %>
       <tr>
         <td><%= link_to trip.title, trip_path(trip.id) %></br></td>
-        <td><%= trip.subtitle %></td>
+        <td><%= trip.subtitle %></br></td>
       </tr>
     <% end %>
+    <ul class="list-inline">
+      <li><%= link_to "新規旅行情報追加",  new_trip_path %></li>
+    </ul>
 </tbody>

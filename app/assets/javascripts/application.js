@@ -17,3 +17,5 @@
 
 //= require jquery
 //= require cocoon
+
+Refile.secret_key = '68e4d8a105a6b3d960855658e42d1a630f5020fb7d015b7968c5cdb06d13a352bb6d538ef9be9a7028437415cd728e8f03f2c3f3984ceab2b5b5c8e4e9cb43b4'

@@ -16,6 +16,9 @@
     <!-- コメント -->
 	<%= f.text_area :comment, :placeholder => "コメント記入欄", :size=>"60x10" %></br>
 	<div id="links">
+      <%= link_to_add_association 'add image', f, :images %>
+    </div>
+	<div id="links">
 	  <%= link_to_remove_association "remove stay", f %>
 	</div>
 </div>

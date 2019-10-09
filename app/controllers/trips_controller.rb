@@ -31,10 +31,10 @@ class TripsController < ApplicationController
 
   def edit
       @trip = Trip.find(params[:id])
-      if @trip.enduser == current_enduser
-      else
-        redirect_to trips_path
-      end
+      # if @trip.enduser == current_enduser
+      # else
+      #   redirect_to trips_path
+      # end
   end
 
   def update
