@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_114451) do
+ActiveRecord::Schema.define(version: 2019_10_09_110623) do
 
   create_table "days", force: :cascade do |t|
     t.integer "day"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2019_10_08_114451) do
     t.text "name"
     t.text "image_id"
     t.integer "stay_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "enduser_id"
+    t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
