@@ -9,10 +9,21 @@ Rails.application.routes.draw do
     passwords: "endusers/passwords"
   }
 
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+}
+
   resources :endusers, only: [:edit, :show, :update, :destroy]
+  resources :admins, only: [:index, :show, :destroy]
 
   resources :trips do
       resource :likes, only: [:create, :destroy]
   end
+
+  resources :admin_trips, only: [:index, :show, :destroy]
+
+  get 'admins/home', as: 'home'
 
 end

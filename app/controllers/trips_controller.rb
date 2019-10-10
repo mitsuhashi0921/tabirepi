@@ -18,9 +18,9 @@ class TripsController < ApplicationController
 
   def create
       @trip = Trip.new(trip_params)
-      # @Trip.enduser_id = current_enduser.id
-      # @enduser = current_enduser
-      # @trips = Trip.all.order(created_at: :desc)
+      @trip.enduser_id = current_enduser.id
+      @enduser = current_enduser
+      @trips = Trip.all.order(created_at: :desc)
       if @trip.save
          redirect_to trips_path(@trip)
          flash[:notice] = "You have creatad book successfully."
@@ -31,10 +31,10 @@ class TripsController < ApplicationController
 
   def edit
       @trip = Trip.find(params[:id])
-      # if @trip.enduser == current_enduser
-      # else
-      #   redirect_to trips_path
-      # end
+      if @trip.enduser == current_enduser
+      else
+        redirect_to trips_path
+      end
   end
 
   def update

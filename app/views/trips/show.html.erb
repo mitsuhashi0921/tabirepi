@@ -6,21 +6,26 @@
         <b style="font-size:20px;"><%= @trip.subtitle %><br></b>
       </div>
     <!-- いいね機能 -->
-    <% if @trip.liked_by?(current_enduser) %>
-      <li>
-        <%= link_to trip_likes_path(@trip), method: :delete do %>
-          <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-          <%= @trip.likes.count %> いいね
-        <% end %>
-      </li>
+    <% if enduser_signed_in? %>
+      <% if @trip.liked_by?(current_enduser) %>
+        <li>
+          <%= link_to trip_likes_path(@trip), method: :delete do %>
+            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+            <%= @trip.likes.count %> いいね
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to trip_likes_path(@trip), method: :post do %>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <%= @trip.likes.count %> いいね
+          <% end %>
+        </li>
+      <% end %>
     <% else %>
-      <li>
-        <%= link_to trip_likes_path(@trip), method: :post do %>
-          <i class="fa fa-heart-o" aria-hidden="true"></i>
-          <%= @trip.likes.count %> いいね
-        <% end %>
-      </li>
+      <%= @trip.likes.count %> いいね
     <% end %>
+
      <div class="margin-bottom moneyfont2">
        <% @trip.days.each do |day| %>
          <% day.stays.each do |stay| %>

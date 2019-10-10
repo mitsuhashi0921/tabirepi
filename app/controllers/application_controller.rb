@@ -1,8 +1,32 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  #before_action :authenticate!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-	def after_sign_in_path_for(resource)
-      trips_path(current_enduser.id)
+
+  def authenticate!
+    if admin_signed_in?
+      authenticate_admin!
+    else
+      authenticate_enduser!
     end
+  end
+
+private
+
+  def after_sign_in_path_for(resource)
+    case resource
+      when Enduser
+        trips_path
+      when Admin
+        home_index_path
+      end
+  end
+
+  def after_sign_out_path_for(resource)
+      trips_path
+  end
+
 
     # deviseコントローラーにストロングパラメータを追加する
     before_action :configure_permitted_parameters, if: :devise_controller?

@@ -1,0 +1,8 @@
+<tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td><%= link_to trip.title, admin_trip_path(trip.id) %></br></td>
+        <td><%= trip.subtitle %></br></td>
+      </tr>
+    <% end %>
+</tbody>

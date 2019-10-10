@@ -1,0 +1,15 @@
+<div class="container">
+	<h1>ユーザー一覧</h1>
+
+		<div class="row">
+			<table class="table table-striped">
+				<% @endusers.each do |enduser| %>
+			      <tr>
+			      	<td><%= attachment_image_tag @enduser, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"%></td>
+			        <td><%= link_to enduser.name, admin_path(enduser.id) %></br></td>
+			        <td><%= enduser.email %></br></td>
+			      </tr>
+			    <% end %>
+			</table>
+		</div>
+</div>

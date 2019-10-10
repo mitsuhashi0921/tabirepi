@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_073900) do
+ActiveRecord::Schema.define(version: 2019_10_10_094531) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
 
   create_table "days", force: :cascade do |t|
     t.integer "day"
@@ -57,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_073900) do
 
   create_table "stays", force: :cascade do |t|
     t.string "status"
+    t.string "prefecture"
     t.string "city"
     t.string "latitude"
     t.string "longitude"
@@ -73,11 +91,11 @@ ActiveRecord::Schema.define(version: 2019_10_10_073900) do
   end
 
   create_table "trips", force: :cascade do |t|
+    t.integer "enduser_id"
+    t.string "title"
     t.text "subtitle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
-    t.integer "enduser_id"
   end
 
 end
