@@ -7,4 +7,7 @@ class Enduser < ApplicationRecord
   has_many :trips, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  validates :name, presence: true
+  validates :name, length: { in: 2..20 }
+
 end

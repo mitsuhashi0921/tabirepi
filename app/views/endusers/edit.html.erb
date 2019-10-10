@@ -1,0 +1,45 @@
+  <div class="container">
+   <div class="row sketchborder">
+    <div class="col-md-8 col-md-offset-2">
+     <h1 class="center-cd">ユーザー編集画面</h1>
+      <%= form_for(@enduser) do |f| %>
+       <div class="form-group has-icon">
+        <!-- 名前 -->
+        <div class="field">
+          <%= f.label :お名前, class: 'labelname' %><br/>
+          <%= f.text_field :name, autofocus: true, class: 'long' %>
+        </div>
+        <!-- メールアドレス -->
+        <div class="field">
+          <%= f.label :メールアドレス, class: 'labelname' %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'long' %>
+        </div>
+        <!--パスワード-->
+        <div class="field">
+         <%= f.label :パスワード, class: 'labelname' %>
+         <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+           <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: 'long' %>
+           </div>
+          <div class="field">
+           <%= f.label :パスワード（確認）, class: 'labelname' %><br />
+           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'long' %>
+          </div>
+         <div class="field">
+          <%= f.label :現在のパスワードを入力ください, class: 'labelname' %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password", class: 'long' %>
+         </div>
+        <% if flash[:alert] %>
+         <div class="alert alert-danger">
+          <%= flash[:alert] %>
+         </div>
+        <% end %>
+       <div class="actions btncenter">
+        <%= f.submit "ユーザー情報更新", class: 'labelname btn-square-pop' %>
+       </div>
+     <% end %>
+    </div>
+     <div class="col-md-2"></div>
+    </div>
+   </div>
