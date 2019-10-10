@@ -6,8 +6,10 @@ class Enduser < ApplicationRecord
 
   has_many :trips, dependent: :destroy
   has_many :likes, dependent: :destroy
+  acts_as_paranoid
 
   validates :name, presence: true
   validates :name, length: { in: 2..20 }
+  attachment :profile_image
 
 end

@@ -24,7 +24,7 @@ class EndusersController < ApplicationController
 
   private
   def enduser_params
-      params.require(:enduser).permit(:name, :email)
+      params.require(:enduser).permit(:name, :email, :profile_image)
   end
 
 end
