@@ -21,6 +21,8 @@
           <% end %>
         <% end %>
       </div>
-    <td><%= link_to "削除", admin_trip_path, model: @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
+      <% if admin_signed_in? %>
+        <td><%= link_to "削除", admin_trip_path, model: @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
+      <% end %>
     <%= link_to "一覧画面に行く", admin_trips_path, class: 'btn btn-default' %>
 </div>

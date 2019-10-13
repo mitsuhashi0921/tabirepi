@@ -1,12 +1,22 @@
 class TripsController < ApplicationController
+before_action :ensure_correct_enduser, {only: [:edit, :update, :destroy]}
+
+  def ensure_correct_enduser
+  @trip = Trip.find_by(id: params[:id])
+    if @current_enduser.id != @trip.enduser_id
+      flash[:notice] = "権限がありません"
+      redirect_to trips_path
+    end
+  end
 
   def index
   	@trips = Trip.all
   end
 
   def show
-    @trip = Trip.find(params[:id])
+    @trip = Trip.find_by(id: params[:id])
     @trips = Trip.all.includes(:days, :stays, :images)
+    @enduser = @trip.enduser
   end
 
   def new

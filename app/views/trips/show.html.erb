@@ -42,7 +42,12 @@
          <% end %>
        <% end %>
      </div>
-    <td><%= link_to "編集", edit_trip_path(@trip), class: "btn btn-success btn-xs" %></td>
-    <td><%= link_to "削除", trip_path, model: @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
+    <% if enduser_signed_in? %>
+      <% if current_enduser.id == @enduser.id %>
+        <td><%= link_to "編集", edit_trip_path(@trip), class: "btn btn-success btn-xs" %></td>
+        <td><%= link_to "削除", trip_path, model: @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
+      <% end %>
+    <% else %>
+    <% end %>
     <%= link_to "一覧画面に行く", trips_path, class: 'btn btn-default' %>
 </div>

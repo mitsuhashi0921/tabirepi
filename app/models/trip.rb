@@ -5,6 +5,10 @@ class Trip < ApplicationRecord
 
 	has_many :likes, dependent: :destroy
 
+	def enduser
+      return Enduser.find_by(id: self.enduser_id)
+    end
+
 	def liked_by?(enduser)
 		likes.where(enduser_id: enduser.id).exists?
     end
