@@ -1,0 +1,30 @@
+<!-- APIでマップ実装 -->
+<div id="map" style="width: 50%; height: 700px; float: right"></div>
+<% i = 1 %>
+  <% @trip.days.each do |day| %>
+    <% day.stays.each do |stay| %>
+    <div id="<%= i %>" data-json="<%= stay.lonlat.to_json %>" ></div>
+    <% i += 1 %>
+    <% end %>
+  <% end %>
+<script type="text/javascript">
+        var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osmAttrib='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+        var map = new L.Map('map').addLayer(osm).setView([36.31181, 139.4783], 2.2);
+        var j = 1;
+
+  <% @trip.days.each do |day| %>
+    <% day.stays.each do |stay| %>
+    var lonlat = JSON.parse(document.getElementById(j).dataset.json);
+    if (lonlat != null){
+        L.marker( lonlat.split(',')).addTo(map);
+    }
+    j += 1;
+    // L.marker( "<%= stay.lonlat %>".split(',')).bindPopup("<%= stay.place %>").addTo(map);
+    // L.marker([34.64586185,135.513934278775],{title:"ハルカス"}).addTo(map);
+    <% end %>
+  <% end %>
+
+</script>
+
