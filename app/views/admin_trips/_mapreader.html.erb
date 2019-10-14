@@ -1,28 +1,24 @@
 <!-- APIでマップ実装 -->
 <div id="map" style="width: 50%; height: 700px; float: right"></div>
-<% i = 1 %>
+<% i = 0 %>
   <% @trip.days.each do |day| %>
     <% day.stays.each do |stay| %>
-    <div id="<%= i %>" data-json="<%= stay.lonlat.to_json %>" ></div>
     <% i += 1 %>
+    <div id="<%= i %>" data-json="<%= stay.lonlat.to_json %>" ></div>
     <% end %>
   <% end %>
+    <div id="j_end" data-json="<%= i.to_json %>" ></div>
 <script type="text/javascript">
         var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         var osmAttrib='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
         var map = new L.Map('map').addLayer(osm).setView([36.31181, 139.4783], 2.2);
-        var j = 1;
-
-  <% @trip.days.each do |day| %>
-    <% day.stays.each do |stay| %>
-    var lonlat = JSON.parse(document.getElementById(j).dataset.json);
-    if (lonlat != null){
-        L.marker( lonlat.split(',')).addTo(map);
-    }
-    j += 1;
-    <% end %>
-  <% end %>
-
+        var j_end = JSON.parse(document.getElementById("j_end").dataset.json);
+        for (var j=1; j<=j_end; j++){
+            var lonlat = JSON.parse(document.getElementById(j).dataset.json);
+            if (lonlat != null){
+                L.marker( lonlat.split(',')).addTo(map);
+            }
+        }
 </script>
 
