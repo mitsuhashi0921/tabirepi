@@ -14,8 +14,12 @@ class Stay < ApplicationRecord
     # 住所を保存用経緯度に変換
     def place_to_lonlat(place)
       result = Geocoder.search(place)
-      lonlat = result.first.coordinates
-      return lonlat.join(',')
+      if result.first
+        lonlat = result.first.coordinates
+        return lonlat.join(',')
+      else
+        return false
+      end
     end
 
 end

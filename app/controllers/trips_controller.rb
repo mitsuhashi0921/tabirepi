@@ -31,8 +31,8 @@ before_action :ensure_correct_enduser, {only: [:edit, :update, :destroy]}
       @trip.enduser_id = current_enduser.id
       @enduser = current_enduser
       @trips = Trip.all.order(created_at: :desc)
-      if @trip.save
-         redirect_to trips_path(@trip)
+      if @trip.save!
+         redirect_to trips_path
          flash[:notice] = "You have creatad book successfully."
       else
          render 'trips/new'
