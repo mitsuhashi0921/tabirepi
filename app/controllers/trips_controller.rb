@@ -3,9 +3,9 @@ before_action :ensure_correct_enduser, {only: [:edit, :update, :destroy]}
 
   def ensure_correct_enduser
   @trip = Trip.find_by(id: params[:id])
-    if @current_enduser.id != @trip.enduser_id
-      flash[:notice] = "権限がありません"
-      redirect_to trips_path
+    if current_enduser.id != @trip.enduser_id
+       flash[:notice] = "権限がありません"
+       redirect_to trips_path
     end
   end
 

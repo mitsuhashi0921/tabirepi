@@ -2,6 +2,12 @@
 <html>
   <head>
     <title>Tabirepi</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+    <script src="https://rawgit.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.js"></script>
+    <link rel="stylesheet" href="https://rawgit.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.css" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -21,35 +27,35 @@
                 <h1><p class="align-middle logocolor">Tabirepi</p></h1>
               </div>
 
-              <div class="col-xs-4">
-              <% if enduser_signed_in? %>
-                <ul class="list-inline">
-                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
-                  </li>
-                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-user"></i> ') + 'マイページ', enduser_path(current_enduser.id) %>
-                  </li>
-                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-out"></i> ') + 'ログアウト', destroy_enduser_session_path, method: :delete %>
-                  </li>
-                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-trash"></i> ') + "退会", enduser_registration_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %>
-                  </li>
-                </ul>
-                <% elsif admin_signed_in? %>
-                  <ul class="list-inline">
-                    <li><%= link_to "ユーザー一覧", admins_path %></li>
-                    <li><%= link_to "旅行情報", admin_trips_path %></li>
-                    <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-                  </ul>
-                <% else %>
-                  <ul class="list-inline">
-                    <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
-                    </li>
-                    <li><%= link_to sanitize('<i class="glyphicon glyphicon-edit"></i> ') + '会員登録', new_enduser_registration_path %>
-                    </li>
-                    <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-in"></i> ') + 'ログイン', enduser_session_path %>
-                    </li>
-                  </ul>
-              <% end %>
-          </div>
+                <div class="col-xs-4">
+                  <% if enduser_signed_in? %>
+                    <ul class="list-inline">
+                      <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
+                      </li>
+                      <li><%= link_to sanitize('<i class="glyphicon glyphicon-user"></i> ') + 'マイページ', enduser_path(current_enduser.id) %>
+                      </li>
+                      <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-out"></i> ') + 'ログアウト', destroy_enduser_session_path, method: :delete %>
+                      </li>
+                      <li><%= link_to sanitize('<i class="glyphicon glyphicon-trash"></i> ') + "退会", enduser_registration_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %>
+                      </li>
+                    </ul>
+                  <% elsif admin_signed_in? %>
+                      <ul class="list-inline">
+                        <li><%= link_to "ユーザー一覧", admins_path %></li>
+                        <li><%= link_to "旅行情報", admin_trips_path %></li>
+                        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+                      </ul>
+                  <% else %>
+                      <ul class="list-inline">
+                        <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
+                        </li>
+                        <li><%= link_to sanitize('<i class="glyphicon glyphicon-edit"></i> ') + '会員登録', new_enduser_registration_path %>
+                        </li>
+                        <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-in"></i> ') + 'ログイン', enduser_session_path %>
+                        </li>
+                      </ul>
+                  <% end %>
+                </div>
         </div>
       </div>
     </nav>

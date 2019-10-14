@@ -1,5 +1,11 @@
+<div class="row">
+  <div class="col-md-6">
+    <div style="width: 50%; height: 100%; float: left">
+    	<%= render 'tripform', trip: @trip %>
+    </div>
+  </div>
+</div>
 <!-- APIでマップ機能実装 -->
-<%= render :partial => "map" %>
-<div class="container">
-	<%= render 'tripform', trip: @trip %>
+<div class="col-md-6">
+  <%= render :partial => "map" %>
 </div>

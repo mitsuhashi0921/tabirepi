@@ -1,18 +1,27 @@
-<div class="container">
-<h1>旅行情報編集画面</h1>
-<%= form_with(model: @trip, url: trip_path, method: :patch) do |s| %>
-  <div class="field">
-    <%= s.text_field :title, :placeholder => "旅のタイトルを記入ください", :size=>"60" %></br>
-    <%= s.text_area :subtitle, :placeholder => "旅の概要を記入してください", :size=>"60x2" %></br>
+<div class="row">
+  <div class="col-md-6">
+    <div style="width: 50%; height: 100%; float: left">
+      <h1>旅行情報編集画面</h1>
+      <%= form_with(model: @trip, url: trip_path, method: :patch) do |s| %>
+        <div class="field">
+          <%= s.text_field :title, :placeholder => "旅のタイトルを記入ください", :size=>"60" %></br>
+          <%= s.text_area :subtitle, :placeholder => "旅の概要を記入してください", :size=>"60x2" %></br>
 
-    <div id="parents">
-      <%= s.fields_for :days do |day| %>
-        <%= render 'day_fields', f: day %>
+          <div id="parents">
+            <%= s.fields_for :days do |day| %>
+              <%= render 'day_fields', f: day %>
+            <% end %>
+          </div>
+        </div>
+        <div class="actions">
+          <%= s.submit "旅行情報更新" %>
+        </div>
       <% end %>
     </div>
   </div>
-  <div class="actions">
-    <%= s.submit "旅行情報更新" %>
-  </div>
-<% end %>
+</div>
+
+<!-- APIでマップ機能実装 -->
+<div class="col-md-6">
+  <%= render :partial => "map" %>
 </div>

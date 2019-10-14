@@ -1,6 +1,6 @@
-<%= render :partial => "map" %>
-
-<div class="col-md-5">
+<div class="row">
+  <div class="col-md-6">
+    <div style="width: 50%; height: 100%; float: left">
       <div class="margin-bottom">
         <b style="font-size:30px;"><%= @trip.title %></br></b>
         <b style="font-size:20px;"><%= @trip.subtitle %><br></b>
@@ -25,4 +25,10 @@
         <td><%= link_to "削除", admin_trip_path, model: @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
       <% end %>
     <%= link_to "一覧画面に行く", admin_trips_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <%= render :partial => "map" %>
 </div>

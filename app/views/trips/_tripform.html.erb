@@ -1,10 +1,8 @@
-<!-- <div class="container"> -->
   <%= form_with model: @trip do |f| %>
     <!-- タイトル -->
 	<%= f.text_field :title, :placeholder => "旅のタイトルを記入ください", :size=>"60" %></br>
 	<!-- 概要 -->
 	<%= f.text_area :subtitle, :placeholder => "旅の概要を記入してください", :size=>"60x2" %></br>
-<!-- </div> -->
 
 <div id="parents">
 	  <%= f.fields_for :days do |day| %>
