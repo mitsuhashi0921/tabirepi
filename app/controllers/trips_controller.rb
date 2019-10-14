@@ -15,7 +15,7 @@ before_action :ensure_correct_enduser, {only: [:edit, :update, :destroy]}
 
   def show
     @trip = Trip.find_by(id: params[:id])
-    @trips = Trip.all.includes(:days, :stays, :images)
+    @trips = Trip.all
     @enduser = @trip.enduser
   end
 
@@ -68,7 +68,7 @@ before_action :ensure_correct_enduser, {only: [:edit, :update, :destroy]}
     def trip_params
     params.require(:trip).permit(:title, :subtitle,
     	  days_attributes: [:id, :day, :_destroy,
-        stays_attributes: [:id, :time, :country, :place, :money, :comment, :status, :_destroy,
+        stays_attributes: [:id, :time, :country, :place, :money, :comment, :status, :lonlat, :_destroy,
         images_attributes: [:id, :image, :_destroy]]])
     end
 end
