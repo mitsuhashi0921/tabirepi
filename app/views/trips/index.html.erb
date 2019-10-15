@@ -1,3 +1,12 @@
+<!-- 検索フォーム -->
+<div class="arrivalbtn">
+  <%= search_form_for(@q, url:trips_path) do |f| %>
+    <%= f.label :'タイトル検索' %>
+    <%= f.search_field :title_cont %>
+    <%= f.submit '検索', class: 'btn btn-primary'  %>
+  <% end %>
+</div>
+
 <tbody>
     <% @trips.each do |trip| %>
       <tr>
@@ -5,6 +14,11 @@
         <td><%= trip.subtitle %></br></td>
       </tr>
     <% end %>
+
+    <div class="center-cd">
+	  <%= paginate(@trips) %>
+	</div>
+
     <% if enduser_signed_in? %>
 	  <ul class="list-inline">
 	    <li><%= link_to "新規旅行情報追加",  new_trip_path %></li>

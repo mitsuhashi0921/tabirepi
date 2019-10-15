@@ -1,7 +1,13 @@
 class AdminTripsController < ApplicationController
 
   def index
-  	  @trips = Trip.all
+    @q = Trip.ransack(params[:q])
+    @trips = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
+  end
+
+  def search
+    @q = Trip.search
+    @trips = @q.result(distinct: true)
   end
 
   def show

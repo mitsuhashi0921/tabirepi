@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
 before_action :ensure_correct_enduser, {only: [:edit, :update, :destroy]}
+before_action :search
 
   def ensure_correct_enduser
   @trip = Trip.find_by(id: params[:id])
@@ -10,7 +11,13 @@ before_action :ensure_correct_enduser, {only: [:edit, :update, :destroy]}
   end
 
   def index
-  	@trips = Trip.all
+  	@q = Trip.ransack(params[:q])
+    @trips = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
+  end
+
+  def search
+    @q = Trip.search
+    @trips = @q.result(distinct: true)
   end
 
   def show

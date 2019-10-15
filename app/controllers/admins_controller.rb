@@ -1,7 +1,13 @@
 class AdminsController < ApplicationController
 
   def index
-	  @endusers = Enduser.all
+    @q = Enduser.ransack(params[:q])
+    @endusers = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
+  end
+
+  def search
+    @q = Enduser.search
+    @endusers = @q.result(distinct: true)
   end
 
   def show
