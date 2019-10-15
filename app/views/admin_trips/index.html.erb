@@ -1,5 +1,6 @@
+<div class="container">
 <!-- 検索フォーム -->
-<div class="arrivalbtn">
+<div class="searchbtn">
   <%= search_form_for(@q, url:admin_trips_path) do |f| %>
     <%= f.label :'タイトル検索' %>
     <%= f.search_field :title_cont %>
@@ -8,10 +9,26 @@
 </div>
 
 <tbody>
-    <% @trips.each do |trip| %>
-      <tr>
-        <td><%= link_to trip.title, admin_trip_path(trip.id) %></br></td>
-        <td><%= trip.subtitle %></br></td>
-      </tr>
-    <% end %>
+  <div class="row">
+    <div class="trip">
+      <table class="table table-bordered">
+        <table class="table table-striped">
+          <% @trips.each do |trip| %>
+            <tr>
+              <td><%= link_to trip.title, admin_trip_path(trip.id) %></br></td>
+              <td><%= trip.subtitle %></br></td>
+              <td><%= trip.likes.count %> いいね</td>
+              <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"%></td>
+              <td><%= trip.enduser.name %></td>
+            </tr></br>
+          <% end %>
+        </table>
+      </table>
+    </div>
+  </div>
+
+    <div class="paginate">
+      <%= paginate(@trips) %>
+    </div>
 </tbody>
+</div>

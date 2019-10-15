@@ -1,58 +1,57 @@
-<div class="row">
-<div class="col-md-6">
-  <div style="width: 50%; height: 100%; float: left">
-      <div class="margin-bottom">
-        <b style="font-size:30px;"><%= @trip.title %></br></b>
-        <b style="font-size:20px;"><%= @trip.subtitle %><br></b>
-      </div>
-    <!-- いいね機能 -->
-    <% if enduser_signed_in? %>
-      <% if @trip.liked_by?(current_enduser) %>
-        <li>
-          <%= link_to trip_likes_path(@trip), method: :delete do %>
-            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-            <%= @trip.likes.count %> いいね
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+          <div class="margin-bottom">
+            <b style="font-size:30px;"><%= @trip.title %></br></b>
+            <b style="font-size:20px;"><%= @trip.subtitle %><br></b>
+          </div>
+        <!-- いいね機能 -->
+        <% if enduser_signed_in? %>
+          <% if @trip.liked_by?(current_enduser) %>
+            <li>
+              <%= link_to trip_likes_path(@trip), method: :delete do %>
+                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= @trip.likes.count %> いいね
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to trip_likes_path(@trip), method: :post do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <%= @trip.likes.count %> いいね
+              <% end %>
+            </li>
           <% end %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to trip_likes_path(@trip), method: :post do %>
-            <i class="fa fa-heart-o" aria-hidden="true"></i>
-            <%= @trip.likes.count %> いいね
-          <% end %>
-        </li>
-      <% end %>
-    <% else %>
-      <%= @trip.likes.count %> いいね
-    <% end %>
+        <% else %>
+          <%= @trip.likes.count %> いいね
+        <% end %>
 
-     <div class="margin-bottom moneyfont2">
-       <% @trip.days.each do |day| %>
-         <% day.stays.each do |stay| %>
-             <%= day.day %>日目</br>
-             <%= stay.time.strftime("%R") %>
-             <%= stay.status %>
-             <%= stay.country %>
-             <%= stay.place %>
-             <%= stay.money %>¥
-             <%= stay.comment %></br>
-           <% stay.images.each do |image| %>
-             <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+         <div class="margin-bottom moneyfont2">
+           <% @trip.days.each do |day| %>
+             <% day.stays.each do |stay| %>
+                 <%= day.day %>日目</br>
+                 <%= stay.time.strftime("%R") %>
+                 <%= stay.status %>
+                 <%= stay.country %>
+                 <%= stay.place %>
+                 <%= stay.money %>¥
+                 <%= stay.comment %></br>
+               <% stay.images.each do |image| %>
+                 <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+               <% end %>
+             <% end %>
            <% end %>
-         <% end %>
-       <% end %>
-     </div>
-    <% if enduser_signed_in? %>
-      <% if current_enduser.id == @enduser.id %>
-        <td><%= link_to "編集", edit_trip_path(@trip), class: "btn btn-success btn-xs" %></td>
-        <td><%= link_to "削除", trip_path, model: @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
-      <% end %>
-    <% else %>
-    <% end %>
-    <%= link_to "一覧画面に行く", trips_path, class: 'btn btn-default' %>
+         </div>
+        <% if enduser_signed_in? %>
+          <% if current_enduser.id == @enduser.id %>
+            <td><%= link_to "編集", edit_trip_path(@trip), class: "btn btn-success btn-xs" %></td>
+            <td><%= link_to "削除", trip_path, model: @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
+          <% end %>
+        <% else %>
+        <% end %>
+        <%= link_to "一覧画面に行く", trips_path, class: 'btn btn-default' %>
+    </div>
+  <div class="col-md-9">
+    <%= render :partial => "mapreader" %>
   </div>
-</div>
-</div>
-<div class="col-md-6">
-<%= render :partial => "mapreader" %>
 </div>

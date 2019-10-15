@@ -1,31 +1,46 @@
-<!-- 検索フォーム -->
-<div class="arrivalbtn">
-  <%= search_form_for(@q, url:trips_path) do |f| %>
-    <%= f.label :'タイトル検索' %>
-    <%= f.search_field :title_cont %>
-    <%= f.submit '検索', class: 'btn btn-primary'  %>
-  <% end %>
+<div class="container">
+  <!-- 検索フォーム -->
+  <div class="searchbtn">
+    <%= search_form_for(@q, url:trips_path) do |f| %>
+      <%= f.label :'タイトル検索' %>
+      <%= f.search_field :title_cont %>
+      <%= f.submit '検索', class: 'btn btn-primary'  %>
+    <% end %>
+  </div>
+
+  <tbody>
+    <div class="row">
+      <div class="trip">
+        <table class="table table-bordered">
+          <table class="table table-striped">
+            <% @trips.each do |trip| %>
+              <tr>
+                <td><%= link_to trip.title, trip_path(trip.id) %></td>
+                <td><%= trip.subtitle %></td>
+                <td><%= trip.likes.count %> いいね</td>
+                <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"%></td>
+                <td><%= trip.enduser.name %></td>
+              </div>
+              </tr>
+            <% end %>
+          </table>
+        </table>
+      </div>
+    </div>
+      <div class="paginate">
+  	    <%= paginate(@trips) %>
+  	  </div>
+
+      <% if enduser_signed_in? %>
+  	  <ul class="list-inline">
+  	    <li><%= link_to "新規旅行情報追加",  new_trip_path %></li>
+  	  </ul>
+  	<% else %>
+  	  <ul class="list-inline">
+  	    <li><%= link_to "新規旅行情報追加",  enduser_session_path %></li>
+  	  </ul>
+  	<% end %>
+
+  </tbody>
 </div>
 
-<tbody>
-    <% @trips.each do |trip| %>
-      <tr>
-        <td><%= link_to trip.title, trip_path(trip.id) %></br></td>
-        <td><%= trip.subtitle %></br></td>
-      </tr>
-    <% end %>
-
-    <div class="center-cd">
-	  <%= paginate(@trips) %>
-	</div>
-
-    <% if enduser_signed_in? %>
-	  <ul class="list-inline">
-	    <li><%= link_to "新規旅行情報追加",  new_trip_path %></li>
-	  </ul>
-	<% else %>
-	  <ul class="list-inline">
-	    <li><%= link_to "新規旅行情報追加",  enduser_session_path %></li>
-	  </ul>
-	<% end %>
-</tbody>

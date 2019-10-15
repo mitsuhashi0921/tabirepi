@@ -4,7 +4,7 @@
 	<!-- 国名をプルダウンで選択 -->
 	<%= f.country_select :country %></br>
 	<!-- 具体的な場所を記述 -->
-	<%= f.text_field :place, :placeholder => "訪問場所", :size=>"40" %></br>
+	<%= f.text_field :place, :placeholder => "訪問場所を記入すると地図データに反映されます。", :size=>"40" %></br>
 	<!-- 状況　出発or到着or滞在 -->
 	<%= f.select :status, [['出発', '出発'], ['到着', '到着'], ['滞在', '滞在']] %>
 	<!-- 費用 -->
