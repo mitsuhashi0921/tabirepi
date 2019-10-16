@@ -1,11 +1,10 @@
 <!-- APIでマップ実装 -->
-<div id="map" style="width: 50%; height: 700px; float: right"></div>
 
     <script type="text/javascript">
         var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         var osmAttrib='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
-        var map = new L.Map('map').addLayer(osm).setView([36.31181, 139.4783], 2.2);
+        var map = new L.Map('map').addLayer(osm).setView([48.84845, 10.29694], 1);
 
         // Control OSM Geocoder
         var option = {

@@ -17,6 +17,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.body{
+    background-image: url("top.jpg");
+}
+
+// ヘッダーここから
 
  *{
    margin: 0;
@@ -24,6 +29,66 @@
    box-sizing: border-box;
  }
 
+
  .logocolor{
    color: #fff;
  }
+
+.title{
+	margin-top: 12px;
+    margin-bottom: 0px;
+}
+
+.sub{
+	margin-top: -8px;
+    margin-bottom: -43px;
+}
+
+.headericon{
+	margin-top: 35px;
+}
+
+// ヘッダーここまで
+
+// 旅行情報詳細ここから
+
+.tripshowbtn{
+	margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.like{
+	margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.tripdata{
+	line-height: 1.8;
+}
+
+// 旅行情報詳細ここまで
+
+
+// 新規投稿ここから
+
+.new{
+	line-height: 1.8;
+}
+
+.mapnew{
+	margin-right: -100px;
+}
+
+.maptext{
+    margin-left: 100px;
+}
+
+.newday{
+	width: 280px;
+}
+
+.links{
+	button: btn btn-primary;
+}
+
+// 新規投稿ここまで

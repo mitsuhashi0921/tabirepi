@@ -12,57 +12,66 @@
       <%= csp_meta_tag %>
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+      <!-- JQUERY BRAZZERS CAROUSEL -->
+      <link rel="stylesheet" href="css/jQuery.Brazzers-Carousel.min.css">
+      <script href="js/jQuery.js"></script>
+      <script href="js/jQuery.Brazzers-Carousel.min.js"></script>
+
+      <link rel="stylesheet" href="application.scss" type="text/css">
   </head>
 
     <header>
       <nav class="navbar navbar-inverse" style="background-color: #00CCFF;">
+        <div class="container">
+          <div class="row">
 
-      <div class="container">
-        <div class="row">
-
-              <div class="col-xs-4">
-                <h3><p class="align-middle logocolor">あなたの旅をレシピする</p></h3></br>
-                <h1><p class="align-middle logocolor">Tabirepi</p></h1>
+              <div class="col-md-4">
+                <h3><div class="sub logocolor">あなたの旅をレシピする</div></h3></br>
+                <h1><div class="title logocolor">Tabirepi</div></h1>
               </div>
 
-                <div class="col-xs-4">
-                  <% if enduser_signed_in? %>
-                    <ul class="list-inline">
-                      <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
-                      </li>
-                      <li><%= link_to sanitize('<i class="glyphicon glyphicon-user"></i> ') + 'マイページ', enduser_path(current_enduser.id) %>
-                      </li>
-                      <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-out"></i> ') + 'ログアウト', destroy_enduser_session_path, method: :delete %>
-                      </li>
-                      <li><%= link_to sanitize('<i class="glyphicon glyphicon-trash"></i> ') + "退会", enduser_registration_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %>
-                      </li>
-                    </ul>
-                  <% elsif admin_signed_in? %>
-                      <ul class="list-inline">
-                        <li><%= link_to "ユーザー一覧", admins_path %></li>
-                        <li><%= link_to "旅行情報", admin_trips_path %></li>
-                        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-                      </ul>
-                  <% else %>
-                      <ul class="list-inline">
-                        <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
-                        </li>
-                        <li><%= link_to sanitize('<i class="glyphicon glyphicon-edit"></i> ') + '会員登録', new_enduser_registration_path %>
-                        </li>
-                        <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-in"></i> ') + 'ログイン', enduser_session_path %>
-                        </li>
-                      </ul>
-                  <% end %>
-                </div>
+                <div class="headericon">
+                  <div class="col-md-8">
+                    <div class="pull-right">
+                      <% if enduser_signed_in? %>
+                        <ul class="list-inline">
+                          <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
+                          </li>
+                          <li><%= link_to sanitize('<i class="glyphicon glyphicon-user"></i> ') + 'マイページ', enduser_path(current_enduser.id) %>
+                          </li>
+                          <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-out"></i> ') + 'ログアウト', destroy_enduser_session_path, method: :delete %>
+                          </li>
+                          <li><%= link_to sanitize('<i class="glyphicon glyphicon-trash"></i> ') + "退会", enduser_registration_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %>
+                          </li>
+                        </ul>
+                      <% elsif admin_signed_in? %>
+                          <ul class="list-inline">
+                            <li><%= link_to "ユーザー一覧", admins_path %></li>
+                            <li><%= link_to "旅行情報", admin_trips_path %></li>
+                            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+                          </ul>
+                      <% else %>
+                          <ul class="list-inline">
+                            <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
+                            </li>
+                            <li><%= link_to sanitize('<i class="glyphicon glyphicon-edit"></i> ') + '会員登録', new_enduser_registration_path %>
+                            </li>
+                            <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-in"></i> ') + 'ログイン', enduser_session_path %>
+                            </li>
+                          </ul>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+          </div>
         </div>
-      </div>
-    </nav>
-      </header>
+      </nav>
+    </header>
     <%= yield %>
       <footer>
         <div class="container">
           <div class="row">
-            <div class="col-xs-9"></div>
             <div class="col-xs-3">
               <p>Tabirepi.inc</p>
             </div>

@@ -4,7 +4,7 @@
     <div style="padding: 5px; margin-top: 20px; margin-bottom: 10px; border: 1px solid #3cb371; border-radius: 10px;">
       <table class="table table-striped">
         <tbody>
-        	<%= attachment_image_tag @enduser, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"%>
+        	<%= attachment_image_tag @enduser, :profile_image, :fill, 100, 100, class: "img-circle profile-thumb", fallback: "no_image.jpg"%>
           <tr style="background-color:#f5f5f5">
 	          <th><p>お名前</p></th>
 	          <th><p>メールアドレス</p></th>

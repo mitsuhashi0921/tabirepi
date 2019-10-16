@@ -14,7 +14,7 @@
 			<table class="table table-striped">
 				<% @endusers.each do |enduser| %>
 			      <tr>
-			      	<td><%= attachment_image_tag enduser, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"%></td>
+			      	<td><%= attachment_image_tag enduser, :profile_image, :fill, 100, 100, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
 			        <td><%= link_to enduser.name, admin_path(enduser.id) %></br></td>
 			        <td><%= enduser.email %></br></td>
 			      </tr>

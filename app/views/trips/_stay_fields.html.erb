@@ -1,24 +1,26 @@
 <div class="nested-fields">
     <!-- 時間を選択 -->
-	<%= f.time_select :time %>
+	<%= f.time_select :time %></br></br>
 	<!-- 国名をプルダウンで選択 -->
-	<%= f.country_select :country %></br>
+	<%= f.country_select :country %></br></br>
 	<!-- 具体的な場所を記述 -->
-	<%= f.text_field :place, :placeholder => "訪問場所を記入すると地図データに反映されます。", :size=>"40" %></br>
+	<%= f.text_field :place, :placeholder => "訪れた場所", :size=>"40" %></br></br>
 	<!-- 状況　出発or到着or滞在 -->
-	<%= f.select :status, [['出発', '出発'], ['到着', '到着'], ['滞在', '滞在']] %>
+	<%= f.select :status, [['出発', '出発'], ['到着', '到着'], ['滞在', '滞在']] %></br></br>
 	<!-- 費用 -->
-	<%= f.number_field :money,min: 0 %>¥</br>
+	<%= f.number_field :money,min: 0 %>¥</br></br>
     <!-- 写真 -->
 	<%= f.fields_for :images do |image| %>
 	  <%= render 'image_fields', f: image %>
 	<% end %>
     <!-- コメント -->
-	<%= f.text_area :comment, :placeholder => "コメント記入欄", :size=>"60x10" %></br>
+	<%= f.text_area :comment, :placeholder => "コメント記入欄", :size=>"60x10" %></br></br>
 	<div id="links">
-      <%= link_to_add_association 'add image', f, :images %>
+      <%= link_to_add_association 'add image', f, :images, class: "btn btn-primary btn-xs"%></br></br>
     </div>
 	<div id="links">
-	  <%= link_to_remove_association "remove stay", f %>
+	  <button type="button" class="btn btn-outline-warning btn-sm">
+        <%= link_to_remove_association "remove stay", f, class: "btn btn-warning btn-xs" %>
+      </button></br></br>
 	</div>
 </div>

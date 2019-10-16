@@ -2,45 +2,62 @@
   <!-- 検索フォーム -->
   <div class="searchbtn">
     <%= search_form_for(@q, url:trips_path) do |f| %>
-      <%= f.label :'タイトル検索' %>
-      <%= f.search_field :title_cont %>
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      <%= f.search_field :title_or_subtitle_cont %>
       <%= f.submit '検索', class: 'btn btn-primary'  %>
     <% end %>
   </div>
 
-  <tbody>
+  <body>
     <div class="row">
       <div class="trip">
         <table class="table table-bordered">
           <table class="table table-striped">
             <% @trips.each do |trip| %>
-              <tr>
-                <td><%= link_to trip.title, trip_path(trip.id) %></td>
-                <td><%= trip.subtitle %></td>
-                <td><%= trip.likes.count %> いいね</td>
-                <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"%></td>
-                <td><%= trip.enduser.name %></td>
-              </div>
-              </tr>
+             <% trip.days.each do |day| %>
+              <% day.stays.each do |stay| %>
+                <% stay.images.each do |image| %>
+                  <tr>
+                    <td><span class="thumb-item">
+                          <%= attachment_image_tag image, :image, :fill, 100, 100, fallback: "no_trip_image_fill100.png" %>
+                        </span>
+                    </td>
+                    <td><%= link_to trip.title, trip_path(trip.id) %></td>
+                    <td><%= trip.subtitle %></td>
+                    <td><span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= trip.likes.count %></td>
+                    <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 100, 100, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
+                    <td><%= trip.enduser.name %></td>
+      </div>
+                  </tr>
+                <% end %>
+              <% end %>
             <% end %>
+          <% end %>
           </table>
         </table>
       </div>
     </div>
-      <div class="paginate">
+      <div class="paginate" style="font-size: 20px">
   	    <%= paginate(@trips) %>
   	  </div>
 
       <% if enduser_signed_in? %>
   	  <ul class="list-inline">
-  	    <li><%= link_to "新規旅行情報追加",  new_trip_path %></li>
+  	    <li><%= link_to "新規旅行情報追加",  new_trip_path, class: "btn btn-primary btn-lg" %></li>
   	  </ul>
   	<% else %>
   	  <ul class="list-inline">
-  	    <li><%= link_to "新規旅行情報追加",  enduser_session_path %></li>
+  	    <li><%= link_to "新規旅行情報追加",  enduser_session_path, class: "btn btn-primary btn-lg" %></li>
   	  </ul>
   	<% end %>
 
-  </tbody>
+  <script>
+    $(document).ready(function() {
+      $(".thumb-item").brazzersCarousel();
+    });
+  </script>
+
+
+  </body>
 </div>
 
