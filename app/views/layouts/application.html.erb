@@ -19,6 +19,12 @@
 
       <!-- application cssファイル読み込み -->
       <link rel="stylesheet" href="application.scss" type="text/css">
+
+      <!-- ハンバーガーメニュー -->
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" href="css/style.css" media="all">
+
   </head>
 
     <header>
@@ -41,8 +47,6 @@
                           <li><%= link_to sanitize('<i class="glyphicon glyphicon-user"></i> ') + 'マイページ', enduser_path(current_enduser.id) %>
                           </li>
                           <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-out"></i> ') + 'ログアウト', destroy_enduser_session_path, method: :delete %>
-                          </li>
-                          <li><%= link_to sanitize('<i class="glyphicon glyphicon-trash"></i> ') + "退会", enduser_registration_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %>
                           </li>
                         </ul>
                       <% elsif admin_signed_in? %>
@@ -67,6 +71,56 @@
           </div>
         </div>
       </nav>
+
+      <!-- ハンバーガーメニュー　ここから -->
+      <div id="sp-menu">
+        <h1>MENU</h1></br>
+        <% if enduser_signed_in? %>
+          <ul class="list-inline">
+            <li><%= link_to sanitize('<i class="glyphicon glyphicon-trash"></i> ') + "退会", enduser_registration_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-xs" %>
+            </li></br>
+          </ul>
+        <% elsif admin_signed_in? %>
+            <ul class="list-inline">
+              <li><%= link_to "ユーザー一覧", admins_path %></li></br>
+              <li><%= link_to "旅行情報", admin_trips_path %></li></br>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li></br>
+            </ul>
+        <% else %>
+            <ul class="list-inline">
+              <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
+              </li></br>
+              <li><%= link_to sanitize('<i class="glyphicon glyphicon-edit"></i> ') + '会員登録', new_enduser_registration_path %>
+              </li></br>
+              <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-in"></i> ') + 'ログイン', enduser_session_path %>
+              </li></br>
+            </ul>
+        <% end %>
+      </div>
+
+      <div id="hm-icon">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/script.js"></script>
+
+      <script>
+        $(function() {
+        $('.menu-trigger').on('click', function() {
+          $(this).toggleClass('active');
+          $('#sp-menu').fadeToggle();
+          return false;
+        });
+       });
+      </script>
+      <!-- ハンバーガーメニュー　ここまで -->
+
+
     </header>
     <%= yield %>
       <footer>
