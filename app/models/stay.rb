@@ -1,6 +1,6 @@
 class Stay < ApplicationRecord
 	belongs_to :day
-	has_many :images, dependent: :destroy
+	has_many :images, dependent: :destroy, inverse_of: :stay
 	accepts_nested_attributes_for :images, allow_destroy: true
 	accepts_attachments_for :images
 

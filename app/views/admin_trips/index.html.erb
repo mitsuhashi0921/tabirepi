@@ -1,34 +1,68 @@
 <div class="container">
-<!-- 検索フォーム -->
-<div class="searchbtn">
-  <%= search_form_for(@q, url:admin_trips_path) do |f| %>
-    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-    <%= f.search_field :title_or_subtitle_cont %>
-    <%= f.submit '検索', class: 'btn btn-primary'  %>
-  <% end %>
-</div>
-
-<tbody>
-  <div class="row">
-    <div class="trip">
-      <table class="table table-bordered">
-        <table class="table table-striped">
-          <% @trips.each do |trip| %>
-            <tr>
-              <td><%= link_to trip.title, admin_trip_path(trip.id) %></br></td>
-              <td><%= trip.subtitle %></br></td>
-              <td><span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= trip.likes.count %></td>
-              <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 100, 100, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
-              <td><%= trip.enduser.name %></td>
-            </tr>
-          <% end %>
-        </table>
-      </table>
-    </div>
+  <!-- 検索フォーム -->
+  <div class="searchbtn">
+    <%= search_form_for(@q, url:admin_trips_path) do |f| %>
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      <%= f.search_field :title_or_subtitle_cont %>
+      <%= f.submit '検索', class: 'btn btn-primary'  %>
+    <% end %>
   </div>
 
-    <div class="paginate">
+  <body>
+    <div class="row">
+      <div class="trip">
+        <table class="table table-bordered">
+          <table class="table table-striped">
+            <% @trips.each do |trip| %>
+                  <tr>
+                    <td>
+                      <div class="multiple">
+                        <% trip.days.each do |day| %>
+                          <% day.stays.each do |stay| %>
+                            <% stay.images.each do |image| %>
+                              <%= attachment_image_tag image, :image, :fill, 100, 100, fallback: "no_trip_image_fill100.png" %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </td>
+                    <td><%= link_to trip.title, admin_trip_path(trip.id) %></td>
+                    <td><%= trip.subtitle %></td>
+                    <td><span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= trip.likes.count %></td>
+                    <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 100, 100, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
+                    <td><%= trip.enduser.name %></td>
+      </div>
+                  </tr>
+          <% end %>
+          </table>
+        </table>
+    </div>
+    <div class="paginate" style="font-size: 20px">
       <%= paginate(@trips) %>
     </div>
-</tbody>
+
+    <script type="text/javascript">
+      $('.multiple').slick({
+        autoplay: true, //自動再生
+        infinite: true, //スライドのループ有効化
+        dots: true, //ドットのナビゲーションを表示
+        slidesToShow: 4, //表示するスライドの数
+        slidesToScroll: 4, //スクロールで切り替わるスライドの数
+        responsive: [{
+          breakpoint: 768, //ブレークポイントが768px
+          settings: {
+            slidesToShow: 3, //表示するスライドの数
+            slidesToScroll: 3, //スクロールで切り替わるスライドの数
+          }
+        }, {
+          breakpoint: 480, //ブレークポイントが480px
+          settings: {
+            slidesToShow: 2, //表示するスライドの数
+            slidesToScroll: 2, //スクロールで切り替わるスライドの数
+          }
+        }]
+      });
+    </script>
+  </body>
 </div>
+

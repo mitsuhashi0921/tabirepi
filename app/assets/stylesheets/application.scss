@@ -17,6 +17,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "slick-theme";
+@import "slick";
+
 .body{
     background-image: url("top.jpg");
 }
@@ -49,7 +52,6 @@
 }
 
 // ヘッダーここまで
-
 // 旅行情報詳細ここから
 
 .tripshowbtn{
@@ -67,8 +69,20 @@
 }
 
 // 旅行情報詳細ここまで
+// 旅行情報一覧ここから
+
+.multiple { padding: 0;}
+.multiple img { width: 100px;}
+.multiple div { margin: 0 5px;}
+.multiple .slick-next { right: 17px;　z-index: 100;}
+.multiple .slick-prev { left: 23px; z-index: 100;}
+
+.slick-list {
+    width: 350px;
+}
 
 
+// 旅行情報一覧ここまで
 // 新規投稿ここから
 
 .new{

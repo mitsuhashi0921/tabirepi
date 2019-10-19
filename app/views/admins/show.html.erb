@@ -21,5 +21,37 @@
        </div>
       <% end %>
     </div>
+
+    <div class="row">
+      <div class="trip">
+        <table class="table table-bordered">
+          <table class="table table-striped">
+            <% @trips.each do |trip| %>
+             <% trip.days.each do |day| %>
+              <% day.stays.each do |stay| %>
+                <% stay.images.each do |image| %>
+                  <tr>
+                    <td><span class="thumb-item">
+                          <%= attachment_image_tag image, :image, :fill, 100, 100, fallback: "no_trip_image_fill100.png" %>
+                        </span>
+                    </td>
+                    <td><%= link_to trip.title, trip_path(trip.id) %></td>
+                    <td><%= trip.subtitle %></td>
+                    <td><span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= trip.likes.count %></td>
+                    <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 100, 100, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
+                    <td><%= trip.enduser.name %></td>
+      </div>
+                  </tr>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+          </table>
+        </table>
+    </div>
+      <div class="paginate" style="font-size: 20px">
+        <%= paginate(@trips) %>
+      </div>
+
   </div>
 </div>

@@ -1,27 +1,42 @@
-<div class="row">
-  <div class="col-md-6">
-    <div style="width: 50%; height: 100%; float: left">
-      <h1>旅行情報編集画面</h1>
-      <%= form_with(model: @trip, url: trip_path, method: :patch) do |s| %>
-        <div class="field">
-          <%= s.text_field :title, :placeholder => "旅のタイトルを記入ください", :size=>"60" %></br>
-          <%= s.text_area :subtitle, :placeholder => "旅の概要を記入してください", :size=>"60x2" %></br>
+<div class="container">
+  <div class="new" style="float: left">
+    <div class="row">
+      <h2>旅行情報を編集する</h2></br>
+        <div class="col-md-5">
+          <%= form_with(model: @trip, local: true, url: trip_path, method: :patch) do |s| %>
+            <div class="field">
+              <%= s.text_field :title, :placeholder => "旅のタイトルを記入ください", :size=>"60" %></br></br>
+              <%= s.text_area :subtitle, :placeholder => "旅の概要を記入してください", :size=>"60x2" %></br>
 
-          <div id="parents">
-            <%= s.fields_for :days do |day| %>
-              <%= render 'day_fields', f: day %>
-            <% end %>
-          </div>
+              <div id="parents">
+                <%= s.fields_for :days do |day| %>
+                  <%= render 'day_fields', f: day %>
+                <% end %>
+              </div>
+              <div class="links">
+                  <%= link_to_add_association 'add days', s, :days, class: "btn btn-primary btn-xs"%>
+              </div></br>
+            </div>
+            <div class="actions">
+              <%= s.submit "旅行情報更新" %>
+            </div>
+          <% end %>
         </div>
-        <div class="actions">
-          <%= s.submit "旅行情報更新" %>
-        </div>
-      <% end %>
     </div>
   </div>
-</div>
 
-<!-- APIでマップ機能実装 -->
-<div class="col-md-6">
-  <%= render :partial => "map" %>
+  <!-- APIでマップ機能実装 -->
+  <div class="mapnew">
+    <div class="maptext" style="float: left">
+        <p>● 地図上でクリックすると緯度,経度が表示されます。</p>
+        <p>● 地図上のマーカーを動かすことでマーカーを削除できます。</p>
+        <p>● 地図上に訪れた場所がない場合は、緯度,経度で記入するとマーカーが表示されます。</p>
+    </div>
+    <div id="map" style="width: 58%; height: 700px; float: right">
+      <div class="col-md-7">
+        <%= render :partial => "map" %>
+      </div>
+    </div>
+  </div>
+
 </div>

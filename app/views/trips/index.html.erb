@@ -14,13 +14,17 @@
         <table class="table table-bordered">
           <table class="table table-striped">
             <% @trips.each do |trip| %>
-             <% trip.days.each do |day| %>
-              <% day.stays.each do |stay| %>
-                <% stay.images.each do |image| %>
                   <tr>
-                    <td><span class="thumb-item">
-                          <%= attachment_image_tag image, :image, :fill, 100, 100, fallback: "no_trip_image_fill100.png" %>
-                        </span>
+                    <td>
+                      <div class="multiple">
+                        <% trip.days.each do |day| %>
+                          <% day.stays.each do |stay| %>
+                            <% stay.images.each do |image| %>
+                              <%= attachment_image_tag image, :image, :fill, 100, 100, fallback: "no_trip_image_fill100.png" %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      </div>
                     </td>
                     <td><%= link_to trip.title, trip_path(trip.id) %></td>
                     <td><%= trip.subtitle %></td>
@@ -29,13 +33,9 @@
                     <td><%= trip.enduser.name %></td>
       </div>
                   </tr>
-                <% end %>
-              <% end %>
-            <% end %>
           <% end %>
           </table>
         </table>
-      </div>
     </div>
       <div class="paginate" style="font-size: 20px">
   	    <%= paginate(@trips) %>
@@ -51,13 +51,42 @@
   	  </ul>
   	<% end %>
 
-  <script>
-    $(document).ready(function() {
-      $(".thumb-item").brazzersCarousel();
-    });
-  </script>
 
+<div class="multiple">
+    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/1.jpg" alt=""></div>
+    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/2.jpg" alt=""></div>
+    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/3.jpg" alt=""></div>
+    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/4.jpg" alt=""></div>
+    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/5.jpg" alt=""></div>
+    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/6.jpg" alt=""></div>
+    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/7.jpg" alt=""></div>
+    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/8.jpg" alt=""></div>
+</div>
 
+      <script type="text/javascript">
+        $(document).on('turbolinks:load', function(){
+          $('.multiple').slick({
+            autoplay: true, //自動再生
+            infinite: true, //スライドのループ有効化
+            dots: true, //ドットのナビゲーションを表示
+            slidesToShow: 4, //表示するスライドの数
+            slidesToScroll: 4, //スクロールで切り替わるスライドの数
+            responsive: [{
+              breakpoint: 768, //ブレークポイントが768px
+              settings: {
+                slidesToShow: 3, //表示するスライドの数
+                slidesToScroll: 3, //スクロールで切り替わるスライドの数
+              }
+            }, {
+              breakpoint: 480, //ブレークポイントが480px
+              settings: {
+                slidesToShow: 2, //表示するスライドの数
+                slidesToScroll: 2, //スクロールで切り替わるスライドの数
+              }
+            }]
+          });
+        });
+      </script>
   </body>
 </div>
 

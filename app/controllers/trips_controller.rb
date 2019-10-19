@@ -38,7 +38,7 @@ before_action :search
       @trip.enduser_id = current_enduser.id
       @enduser = current_enduser
       @trips = Trip.all.order(created_at: :desc)
-      if @trip.save!
+      if @trip.save
          redirect_to trips_path
          flash[:notice] = "You have creatad book successfully."
       else

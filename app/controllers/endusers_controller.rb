@@ -2,6 +2,7 @@ class EndusersController < ApplicationController
 
   def show
   	  @enduser = Enduser.find(params[:id])
+      @trips = @enduser.trips.page(params[:page]).per(10).reverse_order
   end
 
   def edit
