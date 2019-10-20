@@ -1,11 +1,18 @@
 <div class="container">
+
+  <div class="col-md-12">
+    <%= render :partial => "image" %>
+  </div></br>
+
   <!-- 検索フォーム -->
-  <div class="searchbtn">
-    <%= search_form_for(@q, url:trips_path) do |f| %>
-      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-      <%= f.search_field :title_or_subtitle_cont %>
-      <%= f.submit '検索', class: 'btn btn-primary'  %>
-    <% end %>
+  <div class="col-md-12">
+    <div class="searchbtn">
+      <%= search_form_for(@q, url:trips_path) do |f| %>
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        <%= f.search_field :title_or_subtitle_cont %>
+        <%= f.submit '検索', class: 'btn btn-primary'  %>
+      <% end %>
+    </div>
   </div>
 
   <body>
@@ -15,20 +22,9 @@
           <table class="table table-striped">
             <% @trips.each do |trip| %>
                   <tr>
-                    <td>
-                      <div class="multiple">
-                        <% trip.days.each do |day| %>
-                          <% day.stays.each do |stay| %>
-                            <% stay.images.each do |image| %>
-                              <%= attachment_image_tag image, :image, :fill, 100, 100, fallback: "no_trip_image_fill100.png" %>
-                            <% end %>
-                          <% end %>
-                        <% end %>
-                      </div>
-                    </td>
                     <td><%= link_to trip.title, trip_path(trip.id) %></td>
                     <td><%= trip.subtitle %></td>
-                    <td><span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= trip.likes.count %></td>
+                    <td><span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= trip.likes.count %></span></td>
                     <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 100, 100, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
                     <td><%= trip.enduser.name %></td>
       </div>
@@ -50,43 +46,6 @@
   	    <li><%= link_to "新規旅行情報追加",  enduser_session_path, class: "btn btn-primary btn-lg" %></li>
   	  </ul>
   	<% end %>
-
-
-<div class="multiple">
-    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/1.jpg" alt=""></div>
-    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/2.jpg" alt=""></div>
-    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/3.jpg" alt=""></div>
-    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/4.jpg" alt=""></div>
-    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/5.jpg" alt=""></div>
-    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/6.jpg" alt=""></div>
-    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/7.jpg" alt=""></div>
-    <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/8.jpg" alt=""></div>
-</div>
-
-      <script type="text/javascript">
-        $(document).on('turbolinks:load', function(){
-          $('.multiple').slick({
-            autoplay: true, //自動再生
-            infinite: true, //スライドのループ有効化
-            dots: true, //ドットのナビゲーションを表示
-            slidesToShow: 4, //表示するスライドの数
-            slidesToScroll: 4, //スクロールで切り替わるスライドの数
-            responsive: [{
-              breakpoint: 768, //ブレークポイントが768px
-              settings: {
-                slidesToShow: 3, //表示するスライドの数
-                slidesToScroll: 3, //スクロールで切り替わるスライドの数
-              }
-            }, {
-              breakpoint: 480, //ブレークポイントが480px
-              settings: {
-                slidesToShow: 2, //表示するスライドの数
-                slidesToScroll: 2, //スクロールで切り替わるスライドの数
-              }
-            }]
-          });
-        });
-      </script>
   </body>
 </div>
 

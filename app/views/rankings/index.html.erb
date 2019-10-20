@@ -1,0 +1,30 @@
+<div class="container">
+  <body>
+    <div class="row">
+    	<h1>いいねランキング</h1>
+      <div class="trip">
+        <table class="table table-bordered">
+          <table class="table table-striped">
+
+
+          	<% i= 1 %>
+	            <% @trips.each do |trip| %>
+	                  <tr>
+	                    <td>
+	                      <h2><%= i %>位</h2>
+	                    </td>
+	                    <td><%= link_to trip.title, admin_trip_path(trip.id) %></td>
+	                    <td><%= trip.subtitle %></td>
+	                    <td><span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= trip.likes.count %></span></td>
+	                    <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 100, 100, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
+	                    <td><%= trip.enduser.name %></td>
+			<% i+=1 %>
+      </div>
+                        </tr>
+                <% end %>
+          </table>
+        </table>
+    </div>
+
+  </body>
+</div>

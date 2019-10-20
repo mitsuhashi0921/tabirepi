@@ -1,0 +1,2 @@
+module AdminRankingsHelper
+end

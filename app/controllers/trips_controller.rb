@@ -13,6 +13,7 @@ before_action :search
   def index
   	@q = Trip.ransack(params[:q])
     @trips = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
+    @random = Image.all.shuffle
   end
 
   def search

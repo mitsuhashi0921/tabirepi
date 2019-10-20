@@ -33,16 +33,26 @@
           <div class="row">
 
               <div class="col-md-4">
-                <h3><div class="sub logocolor">あなたの旅をレシピする</div></h3></br>
-                <h1><div class="title logocolor">Tabirepi</div></h1>
+                <% if admin_signed_in? %>
+                  <%= link_to home_index_path do %>
+                    <h3><div class="sub logocolor">あなたの旅をレシピする</div></h3></br>
+                    <h1><div class="title logocolor">Tabirepi</div></h1>
+                  <% end %>
+                <% else %>
+                  <%= link_to root_path do %>
+                    <h3><div class="sub logocolor">あなたの旅をレシピする</div></h3></br>
+                    <h1><div class="title logocolor">Tabirepi</div></h1>
+                  <% end %>
+                <% end %>
               </div>
-
                 <div class="headericon">
                   <div class="col-md-8">
                     <div class="pull-right">
                       <% if enduser_signed_in? %>
                         <ul class="list-inline">
                           <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
+                          </li>
+                          <li><%= link_to sanitize('<i class="glyphicon glyphicon-tower"></i> ') + 'ランキング', rankings_path %>
                           </li>
                           <li><%= link_to sanitize('<i class="glyphicon glyphicon-user"></i> ') + 'マイページ', enduser_path(current_enduser.id) %>
                           </li>
@@ -53,11 +63,15 @@
                           <ul class="list-inline">
                             <li><%= link_to "ユーザー一覧", admins_path %></li>
                             <li><%= link_to "旅行情報", admin_trips_path %></li>
+                            <li><%= link_to sanitize('<i class="glyphicon glyphicon-tower"></i> ') + 'ランキング', admin_rankings_path %>
+                            </li>
                             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
                           </ul>
                       <% else %>
                           <ul class="list-inline">
                             <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
+                            </li>
+                            <li><%= link_to sanitize('<i class="glyphicon glyphicon-tower"></i> ') + 'ランキング', rankings_path %>
                             </li>
                             <li><%= link_to sanitize('<i class="glyphicon glyphicon-edit"></i> ') + '会員登録', new_enduser_registration_path %>
                             </li>
@@ -79,17 +93,23 @@
           <ul class="list-inline">
             <li><%= link_to sanitize('<i class="glyphicon glyphicon-trash"></i> ') + "退会", enduser_registration_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-xs" %>
             </li></br>
+            <li><%= link_to sanitize('<i class="glyphicon glyphicon-tower"></i> ') + 'ランキング', rankings_path %>
+            </li></br>
           </ul>
         <% elsif admin_signed_in? %>
             <ul class="list-inline">
               <li><%= link_to "ユーザー一覧", admins_path %></li></br>
               <li><%= link_to "旅行情報", admin_trips_path %></li></br>
+              <li><%= link_to sanitize('<i class="glyphicon glyphicon-tower"></i> ') + 'ランキング', admin_rankings_path %>
+              </li></br>
               <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li></br>
             </ul>
         <% else %>
             <ul class="list-inline">
               <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + 'ホーム', trips_path %>
               </li></br>
+              <li><%= link_to sanitize('<i class="glyphicon glyphicon-tower"></i> ') + 'ランキング', rankings_path %>
+            </li></br>
               <li><%= link_to sanitize('<i class="glyphicon glyphicon-edit"></i> ') + '会員登録', new_enduser_registration_path %>
               </li></br>
               <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-in"></i> ') + 'ログイン', enduser_session_path %>
@@ -119,7 +139,6 @@
        });
       </script>
       <!-- ハンバーガーメニュー　ここまで -->
-
 
     </header>
     <%= yield %>
