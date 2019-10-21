@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'admin_rankings/index'
   get 'rankings/index'
-  root to: 'trips#index'
+  root to: 'home#index'
   get 'home/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   }
 
   devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
-}
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
 
   resources :endusers, only: [:edit, :show, :update, :destroy]
   resources :admins, only: [:index, :show, :destroy]
@@ -28,7 +28,5 @@ Rails.application.routes.draw do
 
   resources :rankings, only: [:index]
   resources :admin_rankings, only: [:index]
-
-  get 'admins/home', as: 'home'
 
 end

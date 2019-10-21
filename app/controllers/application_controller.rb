@@ -19,12 +19,12 @@ private
       when Enduser
         trips_path
       when Admin
-        home_index_path
+        admin_trips_path
       end
   end
 
   def after_sign_out_path_for(resource)
-      trips_path
+      root_path
   end
 
 

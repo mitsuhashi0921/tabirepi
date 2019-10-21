@@ -17,6 +17,41 @@
 /* --- jQery --- */
 /* ---------------------------- */
 
+  /*PCの場合*/
+.qqq { display:none!important; }
+
+ /*以下レスポンシブの場合*/
+@media screen and (max-width: 1199px) {
+.zj { display:none!important; }
+.zk { display:none!important; }
+.qqq { display:none!important; }
+}
+
+@media screen and (max-width: 991px) {
+.zg { display:none!important; }
+.zh { display:none!important; }
+.zi { display:none!important; }
+.zj { display:none!important; }
+.zk { display:none!important; }
+.qqq { display:none!important; }
+}
+
+@media screen and (max-width: 768px) {
+.za	{ display:none!important; }
+.zb	{ display:none!important; }
+.zb { display:none!important; }
+.zc { display:none!important; }
+.zd { display:none!important; }
+.ze { display:none!important; }
+.zf { display:none!important; }
+.zg { display:none!important; }
+.zh { display:none!important; }
+.zi { display:none!important; }
+.zj { display:none!important; }
+.zk { display:none!important; }
+.qqq { display:inline!important; }
+}
+
 .za {float: left;}
 .zb {float: left;}
 .zc {float: left;}
@@ -128,3 +163,6 @@
 
 .ag { max-width: 100px; margin: 0 auto 0px; padding: 0; height: auto;}
 .ag img{ width: 0%;}
+
+.qqq { max-width: 100px; margin: 0 auto 0px; padding: 0; height: auto;}
+.qqq img{ width: 0%;}

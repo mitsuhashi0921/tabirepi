@@ -1,12 +1,20 @@
 <div class="container">
-	<h1>管理者用ホーム</h1>
+	<h3>ポートフォリオサイト</h3>
+	<h1>タビレピへようこそ！！</h1></br></br>
+	  <p>このサイトはあなたが考えた旅のスケジュールを公開する投稿サイトです。</p></br>
+	  <p>これまで行ったオススメの旅を公開するのもよし。</p></br>
+	  <p>これから行く旅のスケジュールツールとして使用するのもよし。</p></br>
+	  <p>このサイトを通してまだ知らない旅の発見に繋がれば幸いです。</p></br>
+	  <p></p></br>
+
+
 		<div class="row">
 			<table class="table table-striped">
 				<tr>
-					<td><%= link_to "ユーザー情報一覧を見る", admins_path %></td>
+					<td><%= link_to "旅の一覧を見る", trips_path %></td>
 				</tr>
 				<tr>
-					<td><%= link_to "旅行情報一覧を見る", admin_trips_path %></td>
+					<td><%= link_to "管理者としてログイン", admin_session_path %></td>
 				</tr>
 			</table>
 		</div>

@@ -196,6 +196,13 @@
     </div>
 </div>
 
+<!-- スマホ,タブレットのみ表示 -->
+<div class="qqq">
+  <% @random.each do |image| %>
+    <%= attachment_image_tag image, :image, :fill, 100, 30 %>
+  <% end %>
+</div>
+
 <script type="text/javascript">
         $(document).ready(function(){
           $('.a').slick({
@@ -459,6 +466,14 @@
             infinite: true, //スライドのループ有効化
             autoplaySpeed: 1,
             speed: 277, //切り替えのスピード（小さくすると速くなる）
+            arrows: false,
+            fade: true //フェードの有効化
+          });
+          $('.qqq').slick({
+            autoplay: true, //自動再生
+            infinite: true, //スライドのループ有効化
+            autoplaySpeed: 1,
+            speed: 800, //切り替えのスピード（小さくすると速くなる）
             arrows: false,
             fade: true //フェードの有効化
           });
