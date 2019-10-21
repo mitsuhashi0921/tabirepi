@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_061147) do
+ActiveRecord::Schema.define(version: 2019_10_21_074416) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_061147) do
     t.text "subtitle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tripstatus", limit: 1, default: 1, null: false
   end
 
 end
