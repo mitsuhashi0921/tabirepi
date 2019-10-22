@@ -1,7 +1,4 @@
-<div class="container">
-  <div class="row">
     <!-- APIでマップ実装 -->
-    <div id="map" style="width: 68%; height: 700px;"></div>
     <% i = 0 %>
       <% @trip.days.each do |day| %>
         <% day.stays.each do |stay| %>
@@ -23,5 +20,3 @@
                 }
             }
     </script>
-  </div>
-</div>

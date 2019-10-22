@@ -3,13 +3,13 @@
   <% if enduser_signed_in? %>
     <% if trip.liked_by?(current_enduser) %>
         <%= button_to trip_likes_path(trip), method: :delete, remote: true do %>
-          <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-          <span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= trip.likes.count %></span>
+          <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+          <span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= trip.likes.count %></span></i>
         <% end %>
     <% else %>
         <%= button_to trip_likes_path(trip), method: :post, remote: true do %>
-          <i class="fa fa-heart-o" aria-hidden="true"></i>
-          <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"> <%= trip.likes.count %></span>
+          <i class="fa fa-heart-o" aria-hidden="true">
+          <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"> <%= trip.likes.count %></span></i>
         <% end %>
     <% end %>
   <% else %>

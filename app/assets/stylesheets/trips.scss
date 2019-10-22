@@ -13,6 +13,63 @@
 	margin: 0px auto;
 }
 
+
+/* ---------------------------- */
+/* --- trip show --- */
+/* ---------------------------- */
+
+
+.tripshowbtn{
+	margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.like{
+	margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.tripdata{
+	line-height: 1.8;
+}
+
+
+/* ---------------------------- */
+/* --- trip new --- */
+/* ---------------------------- */
+
+.new{
+	line-height: 1.8;
+	float: left;
+    width: 41%;
+}
+
+.newday{
+	width: 280px;
+}
+
+.links{
+	button: btn btn-primary;
+}
+
+.mapcss { width: 100%;
+          height: 700px;
+        }
+
+@media screen and (max-width: 1201px) {
+.new {  position: absolute;
+        margin-top: 355px;
+        }
+.maptext { position: relative;
+           margin-left: auto;
+           }
+.mapcss { width: 100%;
+          height: 200px;
+          position: relative;
+          }
+}
+
+
 /* ---------------------------- */
 /* --- jQery --- */
 /* ---------------------------- */

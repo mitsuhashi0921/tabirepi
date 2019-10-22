@@ -1,40 +1,48 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-5">
-        <div class="margin-bottom">
-          <b style="font-size:35px;"><%= @trip.title %></br></b>
-          <b style="font-size:28px;"><%= @trip.subtitle %><br></b>
-        </div>
-        <div class="like">
-          <span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= @trip.likes.count %>
-        </div>
-        <div class="tripdata">
-          <% @trip.days.each do |day| %>
-            <% day.stays.each do |stay| %>
-                <b style="font-size:20px;"><%= day.day %>日目</br></b>
-                <%= stay.time.strftime("%R") %>
-                <%= stay.status %>
-                <%= stay.country %>
-                <%= stay.place %>
-                <%= stay.money %>¥
-                <%= stay.comment %></br>
-              <% stay.images.each do |image| %>
-               <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+  <div class="new">
+    <div class="row">
+      <div class="col-md-5">
+          <div class="margin-bottom">
+            <b style="font-size:14px;"><%= @trip.title %></br></b>
+            <b style="font-size:10px;"><%= @trip.subtitle %><br></b>
+          </div>
+          <div class="like">
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= @trip.likes.count %></span>
+          </div>
+          <div class="tripdata">
+            <% @trip.days.each do |day| %>
+              <% day.stays.each do |stay| %>
+                  <b style="font-size:20px;"><%= day.day %>日目</br></b>
+                  <%= stay.time.strftime("%R") %>
+                  <%= stay.status %>
+                  <%= stay.country %>
+                  <%= stay.place %>
+                  <%= stay.money %>¥
+                  <%= stay.comment %></br>
+                <% stay.images.each do |image| %>
+                 <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        </div>
+          </div>
 
-        <div class="tripshowbtn">
-          <% if admin_signed_in? %>
-            <td><%= link_to "削除", admin_trip_path, model: @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
-          <% end %>
-        <%= link_to "一覧画面に行く", admin_trips_path, class: 'btn btn-default' %>
-        </div>
-    </div>
-
-      <div class="col-md-7">
-        <%= render :partial => "mapreader" %>
+          <div class="tripshowbtn">
+            <% if admin_signed_in? %>
+              <td><%= link_to "削除", admin_trip_path, model: @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
+            <% end %>
+          <%= link_to "一覧画面に行く", admin_trips_path, class: 'btn btn-default' %>
+          </div>
       </div>
+    </div>
+  </div>
+
+  <div class="col-md-7">
+    <div class="row">
+      <div id="map">
+        <div class="mapcss">
+          <%= render :partial => "mapreader" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,13 +1,12 @@
 <div class="container">
-  <div class="new" style="float: left">
-    <div class="row">
-      <h2>旅行情報を編集する</h2></br>
+  <h2>旅行情報を編集する</h2></br>
+    <div class="new">
+      <div class="row">
         <div class="col-md-5">
           <%= form_with(model: @trip, local: true, url: trip_path, method: :patch) do |s| %>
             <div class="field">
-              <%= s.text_field :title, :placeholder => "旅のタイトルを記入ください", :size=>"60" %></br></br>
-              <%= s.text_area :subtitle, :placeholder => "旅の概要を記入してください", :size=>"60x2" %></br>
-
+              <%= s.text_field :title, :placeholder => "旅のタイトルを記入ください", :size=>"30" %></br></br>
+              <%= s.text_area :subtitle, :placeholder => "旅の概要を記入してください", :size=>"30x2" %></br>
               <div id="parents">
                 <%= s.fields_for :days do |day| %>
                   <%= render 'day_fields', f: day %>
@@ -23,21 +22,27 @@
             </div>
           <% end %>
         </div>
+      </div>
     </div>
-  </div>
 
   <!-- APIでマップ機能実装 -->
-  <div class="mapnew">
-    <div class="maptext" style="float: left">
-        <p>● 地図上でクリックすると緯度,経度が表示されます。</p>
-        <p>● 地図上のマーカーを動かすことでマーカーを削除できます。</p>
-        <p>● 地図上に訪れた場所がない場合は、緯度,経度で記入するとマーカーが表示されます。</p>
+  <div class="col-md-7">
+    <div class="row">
+      <div class="mapnew">
+        <div class="maptext">
+          <p>● 地図上でクリックすると緯度,経度が表示されます。</p>
+          <p>● 地図上のマーカーを動かすことでマーカーを削除できます。</p>
+          <p>● 地図上に訪れた場所がない場合は、緯度,経度で記入するとマーカーが表示されます。</p>
+        </div>
+      </div>
     </div>
-    <div id="map" style="width: 58%; height: 700px; float: right">
-      <div class="col-md-7">
-        <%= render :partial => "map" %>
+
+    <div class="row">
+      <div id="map">
+        <div class="mapcss">
+          <%= render :partial => "map" %>
+        </div>
       </div>
     </div>
   </div>
-
 </div>

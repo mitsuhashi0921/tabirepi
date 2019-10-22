@@ -1,23 +1,30 @@
 <div class="container">
-  <div class="new" style="float: left">
+	<h2>新しく投稿する</h2></br>
+  <div class="new">
 	<div class="row">
-	  <h2>新しく投稿する</h2></br>
-	    <div class="col-md-5">
-	      <%= render 'tripform', trip: @trip %>
-	    </div>
+	  <div class="col-md-5">
+	    <%= render 'tripform', trip: @trip %>
+      </div>
 	</div>
   </div>
 	<!-- APIでマップ機能実装 -->
-	<div class="mapnew">
-	  <div class="maptext" style="float: left">
-	      <p>● 地図上でクリックすると緯度,経度が表示されます。</p>
-	      <p>● 地図上のマーカーを動かすことでマーカーを削除できます。</p>
-	      <p>● 地図上に訪れた場所がない場合は、緯度,経度で記入するとマーカーが表示されます。</p>
-	  </div>
-		<div id="map" style="width: 58%; height: 700px; float: right">
-		  <div class="col-md-7">
-		    <%= render :partial => "map" %>
-		  </div>
+	<div class="col-md-7">
+		<div class="row">
+			<div class="mapnew">
+			  <div class="maptext">
+			      <p>● 地図上でクリックすると緯度,経度が表示されます。</p>
+			      <p>● 地図上のマーカーを動かすことでマーカーを削除できます。</p>
+			      <p>● 地図上に訪れた場所がない場合は、緯度,経度で記入するとマーカーが表示されます。</p>
+			  </div>
+		    </div>
 		</div>
-    </div>
+
+		<div class="row">
+			<div id="map">
+			  <div class="mapcss">
+				<%= render :partial => "map" %>
+		      </div>
+		    </div>
+	    </div>
+	</div>
 </div>

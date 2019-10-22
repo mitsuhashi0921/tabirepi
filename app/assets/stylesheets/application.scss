@@ -20,8 +20,13 @@
 @import "slick-theme";
 @import "slick";
 
-.body{
-    background-image: url("top.jpg");
+footer {
+  background-color: #89c7de;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
 
 /* ---------------------------- */
@@ -143,49 +148,5 @@
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-}
-
-/* ---------------------------- */
-/* --- trip show --- */
-/* ---------------------------- */
-
-
-.tripshowbtn{
-	margin-top: 50px;
-    margin-bottom: 80px;
-}
-
-.like{
-	margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.tripdata{
-	line-height: 1.8;
-}
-
-
-/* ---------------------------- */
-/* --- trip new --- */
-/* ---------------------------- */
-
-.new{
-	line-height: 1.8;
-}
-
-.mapnew{
-	margin-right: -100px;
-}
-
-.maptext{
-    margin-left: 100px;
-}
-
-.newday{
-	width: 280px;
-}
-
-.links{
-	button: btn btn-primary;
 }
 
