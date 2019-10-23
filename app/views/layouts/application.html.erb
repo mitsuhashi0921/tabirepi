@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<div class="main-container">
   <head>
     <title>Tabirepi</title>
       <!-- API 地図データ読み込み -->
@@ -112,10 +113,13 @@
       <!-- ハンバーガーメニュー　ここまで -->
 
     </header>
-    <%= yield %>
+
+    <main>
+      <%= yield %>
+    </main>
+
     <footer>
-      
-        <p>Tabirepi.inc</p>
-      
+      <p>Tabirepi.inc</p>
     </footer>
+</div>
 </html>

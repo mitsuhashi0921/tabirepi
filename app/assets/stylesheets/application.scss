@@ -27,25 +27,37 @@ footer {
   position: fixed;
   bottom: 0px;
   width: 100%;
+  float: left;
 }
 
-/* ---------------------------- */
-/* ---     ヘッダー    --- */
-/* ---------------------------- */
+.main-container {
+  background-image: url("/images/top6.jpg");
+  height: auto;
+  background-size: cover;
+}
 
- *{
+*{
+  font-family: ヒラギノ丸ゴ ProN W4, arial, fantasy;
+  font-weight:700;
+}
+
+*{
    margin: 0;
    padding: 0;
    box-sizing: border-box;
  }
 
+/* ---------------------------- */
+/* ---     ヘッダー    --- */
+/* ---------------------------- */
 
- .logocolor{
-   color: #fff;
+
+.logocolor{
+  color: #fff;
  }
 
 .title{
-	margin-top: 12px;
+　margin-top: 12px;
     margin-bottom: 0px;
 }
 
