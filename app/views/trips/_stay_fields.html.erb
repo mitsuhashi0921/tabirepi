@@ -14,7 +14,7 @@
 	  <%= render 'image_fields', f: image %>
 	<% end %>
     <!-- コメント -->
-	<%= f.text_area :comment, :placeholder => "コメント記入欄", :size=>"30x10" %></br></br>
+	<%= f.text_area :comment, :placeholder => "コメント記入欄(250文字以下)", :size=>"30x10" %></br></br>
 	<div id="links">
       <%= link_to_add_association 'add image', f, :images, class: "btn btn-primary btn-xs"%></br></br>
     </div>
