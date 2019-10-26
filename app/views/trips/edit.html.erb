@@ -5,8 +5,8 @@
         <div class="col-md-5">
           <%= form_with(model: @trip, local: true, url: trip_path, method: :patch) do |s| %>
             <div class="field">
-              <%= s.text_field :title, :placeholder => "旅のタイトルを記入ください", :size=>"30" %></br></br>
-              <%= s.text_area :subtitle, :placeholder => "旅の概要を記入してください", :size=>"30x2" %></br>
+              <%= s.text_field :title, :placeholder => "旅のタイトルを記入ください(1文字以上50文字以下)", :size=>"30" %></br></br>
+              <%= s.text_area :subtitle, :placeholder => "旅の概要を記入してください(250文字以下)", :size=>"30x2" %></br>
               <div id="parents">
                 <%= s.fields_for :days do |day| %>
                   <%= render 'day_fields', f: day %>
