@@ -1,21 +1,24 @@
 <div class="container">
-	<h3>ポートフォリオサイト</h3>
-	<h1>タビレピへようこそ！！</h1></br></br>
+  <div class="toppage">
+	<h6>ポートフォリオサイト</h6>
+	<h4>タビレピへようこそ！！</h4></br></br>
 	  <p>このサイトはあなたが考えた旅のスケジュールを公開する投稿サイトです。</p></br>
 	  <p>これまで行ったオススメの旅を公開するのもよし。</p></br>
 	  <p>これから行く旅のスケジュールツールとして使用するのもよし。</p></br>
 	  <p>このサイトを通してまだ知らない旅の発見に繋がれば幸いです。</p></br>
 	  <p></p></br>
 
-
 		<div class="row">
-			<table class="table table-striped">
+		  <table class="table table-respinsive">
+			<table class="table table-hover">
 				<tr>
-					<td><%= link_to "旅の一覧を見る", trips_path %></td>
-				</tr>
-				<tr>
-					<td><%= link_to "管理者としてログイン", admin_session_path %></td>
+					<td><%= link_to trips_path do %>
+						  <p>旅の一覧を見る</p>
+						<% end %>
+					</td>
 				</tr>
 			</table>
+		  </table>
 		</div>
+  </div>
 </div>

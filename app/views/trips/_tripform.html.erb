@@ -1,20 +1,20 @@
   <%= form_with model: @trip ,local: true do |f| %>
     <!-- タイトル -->
-	<%= f.text_field :title, :placeholder => "旅のタイトルを記入してください", :size=>"30" %></br></br>
-	<!-- 概要 -->
-	<%= f.text_area :subtitle, :placeholder => "旅の概要を記入してください", :size=>"30x2" %></br></br>
+  	<%= f.text_field :title, :placeholder => "旅のタイトルを記入してください", :size=>"30" %></br></br>
+  	<!-- 概要 -->
+  	<%= f.text_area :subtitle, :placeholder => "旅の概要を記入してください", :size=>"30x2" %></br></br>
 
-<div id="parents">
-	  <%= f.fields_for :days do |day| %>
-	    <%= render 'day_fields', f: day %>
-	  <% end %>
-</div>
+    <div id="parents">
+    	  <%= f.fields_for :days do |day| %>
+    	    <%= render 'day_fields', f: day %>
+    	  <% end %>
+    </div>
 
-<div class="links">
-  <%= link_to_add_association 'add days', f, :days, class: "btn btn-primary btn-xs"%>
-</div></br>
+    <div class="links">
+      <%= link_to_add_association 'add days', f, :days, class: "btn btn-primary btn-xs"%>
+    </div></br>
 
-  <div class="actions">
-    <%= f.submit '記録する' %>
-  </div>
+    <div class="actions" style="margin-bottom: 40px;">
+      <%= f.submit '記録する' %>
+    </div>
   <% end %>

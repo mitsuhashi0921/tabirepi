@@ -31,9 +31,24 @@ footer {
 }
 
 .main-container {
-  background-image: url("/images/top6.jpg");
-  height: max-content;
+  background-image: url("/images/top10.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  height: 100%;
+  background-color: #464646;
+}
+
+main {
+  min-height: 755px;
+}
+
+@media screen and (min-height: 1024px) {
+    main{  min-height: 880px;}
+}
+@media screen and (min-height: 1366px) {
+    main{  min-height: 1258px;}
 }
 
 *{
@@ -57,7 +72,7 @@ footer {
  }
 
 .title{
-　margin-top: 12px;
+ margin-top: 12px;
     margin-bottom: 0px;
 }
 
