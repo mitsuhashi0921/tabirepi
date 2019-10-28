@@ -78,3 +78,6 @@ gem 'jquery-turbolinks'
 gem 'city-state'
 gem 'geocoder'
 gem 'country_select'
+group :production do
+  gem 'mysql2'
+end
