@@ -7,7 +7,7 @@
         <!-- プロフィール画像 -->
         <div class="form-group has-icon">
           <div class="enduser-edit-image">
-            <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+            <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "/images/no_image.jpg"%>
           </div>
             <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
             <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "enduser-edit-form" %>

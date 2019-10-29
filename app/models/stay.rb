@@ -3,6 +3,7 @@ class Stay < ApplicationRecord
 	has_many :images, dependent: :destroy, inverse_of: :stay
 	accepts_nested_attributes_for :images, allow_destroy: true
 	accepts_attachments_for :images
+  validates :comment,    length: { maximum: 250 }      # 「250文字以下」
 
     before_save :update_lonlat
 

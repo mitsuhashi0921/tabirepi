@@ -18,7 +18,7 @@
                     <td><%= link_to trip.title, admin_trip_path(trip.id) %></td>
                     <td><%= trip.subtitle %></td>
                     <td><span class="glyphicon glyphicon-heart" aria-hidden="true"> <%= trip.likes.count %></td>
-                    <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 50, 50, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
+                    <td><%= attachment_image_tag trip.enduser, :profile_image, :fill, 50, 50, class: "img-circle profile-thumb", fallback: "/images/no_image.jpg"%></td>
                     <td><%= trip.enduser.name %></td>
                   </tr>
           <% end %>
